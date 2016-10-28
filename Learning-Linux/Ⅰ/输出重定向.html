@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Next: <a href='通配符.html'>通配符</a>, Previous: <a href='其他帮助命令.html'>其他帮助命令</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>输出重定向</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><h3 id="-">标准输入输出</h3>
+<table>
+<thead>
+<tr>
+<th>设备</th>
+<th>设备文件名</th>
+<th style="text-align:center">文件描述符</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>键盘</td>
+<td><code>/dev/stdin</code></td>
+<td style="text-align:center">0</td>
+<td>标准输入</td>
+</tr>
+<tr>
+<td>显示器</td>
+<td><code>/dev/sdtout</code></td>
+<td style="text-align:center">1</td>
+<td>标准输出</td>
+</tr>
+<tr>
+<td>显示器</td>
+<td><code>/dev/sdteer</code></td>
+<td style="text-align:center">2</td>
+<td>标准错误输出</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-">输出重定向</h3>
+</div><div class='cell text-cell'><div><img src="resources/E72CB8AD-B9C0-4AA2-868C-75F3434D3473.png"><br></div></div><div class='cell markdown-cell'><p>如<code>ipconfig &gt; ~/desktop/test.log</code>，将内容保存在日志文件中<br>只要命令有输出就能重定向到文件中<br>特别注意，错误输出大于号和文件之间不能有空格！！！</p>
+</div><div class='cell markdown-cell'><h3 id="-">正确和错误输出同时保存</h3>
+</div><div class='cell text-cell'><div><img src="resources/00258548-C9C5-412B-9C3E-E6C69CF48E14.png"><br></div></div><div class='cell markdown-cell'><p>3和4作用是一样的！推荐3,4,5！<br>特别这个文件<code>/dev/null</code>，被称为『黑洞』，如果把命令重定向到这儿，系统就直接抛弃了</p>
+</div><div class='cell markdown-cell'><h3 id="-">输入重定向</h3>
+<p><code>wc【选项】【文件名】</code><br>选项：<br><code>-c</code> 统计字节数<br><code>-w</code> 统计单词数<br><code>-l</code> 统计行数<br>这里首先引入这个例子——<code>wc &lt; test.log</code>，<code>wc</code>命令原本的输入是键盘，现在重新定向为文件，当然，其实不需要<code>&lt;</code><br>另外一个例子是——<code>wc &lt;&lt; ddy</code>，它会要求你不断输入，知道再遇到<code>ddy</code>，就会停止并做相关统计，实际工作中基本不会用到</p>
+</div></div>
+</body>
+</html>

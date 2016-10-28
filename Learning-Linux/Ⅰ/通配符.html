@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Next: <a href='文件搜索命令.html'>文件搜索命令</a>, Previous: <a href='输出重定向.html'>输出重定向</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>通配符</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><h3 id="-">通配符</h3>
+<table>
+<thead>
+<tr>
+<th>通配符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>?</td>
+<td>匹配一个任意字符</td>
+</tr>
+<tr>
+<td>*</td>
+<td>匹配0个或任意多个任意字符，也就是可以匹配任何内容</td>
+</tr>
+<tr>
+<td>[]</td>
+<td>匹配中括号中任意一个字符。例如[abc]代表一定匹配一个字符，或者a或者b或者c</td>
+</tr>
+<tr>
+<td>[-]</td>
+<td>匹配中括号中任意一个字符，-代表一个范围。例如，[a-z]代表匹配一个小写字母</td>
+</tr>
+<tr>
+<td>[^]</td>
+<td>逻辑非，表示匹配不是中括号内的一个字符。例如[^0-9]代表匹配一个不是数字的字符</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bash-">Bash中其他特殊符号</h3>
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#39;&#39;</td>
+<td>单引号。在单引号中所有的特殊符号，如&quot;$&quot;和&quot;`&quot;（反引号）都没有特殊含义</td>
+</tr>
+<tr>
+<td>&quot;&quot;</td>
+<td>双引号。在双引号中特殊符号都没有特殊含义，但是&quot;$&quot;、&quot;`&quot;和&quot;\&quot;是例外，拥有&quot;调用变量的值&quot;、&quot;引用命令&quot;和&quot;转义符&quot;的特殊含义</td>
+</tr>
+<tr>
+<td>``</td>
+<td>反引号。反引号括起来的内容是系统命令，在Bash中会先执行它。和$()作用一样，不过推荐使用$()，因为反引号非常容易看错。</td>
+</tr>
+<tr>
+<td>$()</td>
+<td>和反引号一样，用来引用系统命令</td>
+</tr>
+<tr>
+<td>#</td>
+<td>在Shell脚本中，#开头的行代表注释</td>
+</tr>
+<tr>
+<td>$</td>
+<td>用于调用变量的值，如需要调用变量name的值时，需要用$name的方式得到变量的值。</td>
+</tr>
+<tr>
+<td>\</td>
+<td>转义符，跟在\之后的特殊符号将失去特殊含义，变味普通字符。如\$将输出&quot;$&quot;符号，而不当作是变量引用</td>
+</tr>
+</tbody>
+</table>
+</div><div class='cell markdown-cell'><h3 id="-">举例</h3>
+</div><pre class='cell code-cell'><code>aa=123
+echo $aa
+# 输出123
+
+echo &#39;$aa&#39;
+# 输出$aa
+
+echo &quot;$aa&quot;
+# 输出123
+
+aa=`ls` # 先执行，再赋值，易弄错，不推荐
+echo $aa
+# 输出ls的输出
+
+aa=$(ls) # 推荐
+echo $aa
+# 输出ls的输出
+
+echo \$aa # 让特殊符号失去作用
+# 输出$aa</code></pre></div>
+</body>
+</html>

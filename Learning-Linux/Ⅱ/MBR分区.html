@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  
+  <div id="titlearea">
+    <h2>MBR分区</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><h3 id="-">分区命令</h3>
+<p><code>fdisk【选项】</code><br>如<code>fdisk -l</code>代表列出当前磁盘信息<br>假设我们后来添加了一块硬盘，被系统识别为<code>/dev/sdb</code>，但未被分区，即显示<code>doesn&#39;t contain a valid partition table</code>，我们可以通过以下步骤对其进行分区：</p>
+</div><pre class='cell code-cell'><code>fdisk /dev/sdb # 进入分区模式
+# 输入m可以查看命令的帮助信息
+# 输入n，代表add a new partition
+# 此时弹出两个选项，一个p（主分区），一个e（扩展分区）
+# 输入p
+# 弹出partition number选项，即要求输入分区号，默认为1，直接enter
+# 弹出first sector选项，即要求设置分区的起始位置，直接enter，即默认
+# 弹出last sector选项，即要求设置分区的终止位置，可以通过增量方式显式设置这个分区的大小，比如+2048M，即2G大小
+# 完成主分区添加
+
+# 输入p，查看已经添加的分区
+# 输入n，选择e，即添加扩展分区，后面一路enter，使用默认值*
+
+# 输入n，可以看到此时有一个主分区，一个扩展分区，接下来在扩展分区上分逻辑分区，而逻辑分区编号只能从5开始，因为1~4是留给主分区和扩展分区使用的
+# 输入l，添加一个逻辑分区，比如分给它2G
+# 重复步骤再添加一个逻辑分区，选择大小的时候直接enter，将剩余空间全给它
+
+# 完成分区，可以看出两个逻辑分区是在扩展分区内的
+
+# 此时如果要删除某个分区，输入d，在输入分区对应的分区号，如2，就将扩展分区删除了，此时逻辑分区也没有了，只剩下主分区了
+
+# 最后输入w，即真正完成磁盘分区</code></pre></div>
+</body>
+</html>

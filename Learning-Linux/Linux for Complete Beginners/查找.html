@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Next: <a href='脚本编程.html'>脚本编程</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>查找</h2>
+  </div>
+  <div id="contentarea"><div class='cell text-cell'><div><img src="resources/662309A5-8D74-4FA5-BA08-00F89A50E37C.png"><br></div></div><div class='cell markdown-cell'><p><code>find .</code> 可以查看当前目录所有嵌套的文件<br><code>find .|grep .txt</code> 使用管道符<br><code>find . -type f</code> 只想看到文件<br><code>find . -type d</code> 只想看到目录<br><code>find . -type f -exec ls -l &#39;{}&#39; &#39;;&#39;</code> 其中<code>&#39;{}&#39;</code>代表找到的文件<br>还可以使用<code>ack</code>，来自<code>beyondgrep.com</code>，具体使用见<code>happycasts.net/episodes/26</code></p>
+</div></div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  
+  <div id="titlearea">
+    <h2>命令格式</h2>
+  </div>
+  <div id="contentarea"><pre class='cell code-cell'><code>[root@localhost ~]#</code></pre><div class='cell markdown-cell'><p><code>root</code>段代表当前用户，<code>localhost</code>是主机名<br>如果是超级用户，当前目录为<code>/root</code>根目录，如果是普通用户user1，则为<code>/home/user1</code><br><code>#</code>表示当前用户位超级用户，<code>$</code>则为普通用户</p>
+</div><div class='cell markdown-cell'><p>格式：<code>命令 【选项】【参数】</code></p>
+</div><div class='cell markdown-cell'><h3 id="-">查询目录内容命令</h3>
+<p><code>ls 【选项】【目录/文件】</code></p>
+</div><pre class='cell code-cell'><code>ls -l ~/desktop
+drwxr-xr-x@  3 Jeff  staff    102  3  8 11:08 $RECYCLE.BIN
+drwxr-xr-x   6 Jeff  staff    204  4  9 16:13 A*算法
+drwxr-xr-x  10 Jeff  staff    340  4  9 16:14 Learning_Python
+-rw-r--r--   1 Jeff  staff   1441  3 30 11:43 SSH设置
+-rw-r--r--@  1 Jeff  staff  48640  3  8 11:08 Thumbs.db
+drwxr-xr-x  10 Jeff  staff    340  4  9 18:07 myBooks
+drwxr-xr-x  10 Jeff  staff    340  4 10 11:02 毕业规范
+-rw-r--r--@  1 Jeff  staff   6313  4  8 21:36 实习小结.md</code></pre><div class='cell markdown-cell'><p><code>-l</code> 显示详细信息<br>权限10位 <code>-rw-r—r—</code><br>第1位代表文件类型: -文件 d目录 l软链接文件<br><code>rw-</code> u所有者 班级<br><code>r--</code> g所属组 美眉<br><code>r--</code> o其他人 大老爷们傻和尚<br><code>r</code>读 <code>w</code>写 <code>x</code>执行<br>3,6,10这些数字代表引用计数<br>102，204，340这些数字代表字节大小，改用<code>ls -lh</code>就变成kB，易于阅读</p>
+</div><pre class='cell code-cell'><code>ls -a ~/desktop
+$RECYCLE.BIN	.DS_Store	Learning_Python	myBooks
+.		.localized	SSH设置		毕业规范
+..		A*算法		Thumbs.db	实习小结.md</code></pre><div class='cell markdown-cell'><p><code>-a</code> 显示所有文件，包括隐藏文件<br><code>-la</code> 详细显示所有文件</p>
+</div><pre class='cell code-cell'><code>ls -ld ~/desktop
+drwx------+ 12 Jeff  staff  408  4 10 17:07 /Users/Jeff/desktop</code></pre><div class='cell markdown-cell'><p><code>-d</code> 显示目录属性<br><code>-ld</code> 详细显示目录属性</p>
+</div><div class='cell markdown-cell'><p>对目录如果没有w权限，即使里面的文件有写权限，也不能对文件进行移动，重命名操作，此时，需要给目录加上w权限：<code>chmod +w</code>（注意此时cwd是此目录）</p>
+</div></div>
+</body>
+</html>

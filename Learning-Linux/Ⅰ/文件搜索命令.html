@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Next: <a href='压缩命令1.html'>压缩命令1</a>, Previous: <a href='通配符.html'>通配符</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>文件搜索命令</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><h3 id="-">文件搜索命令</h3>
+<p><code>locate 文件名</code>在后台数据库中按文件名搜索，速度更快<br>这个数据库是<code>/var/lib/mlocate</code>，它的更新速率默认是一天一次，Linux版本的不同，名字不同，Mac下在<code>/var/db/locate.datebase</code><br>可以使用<code>updatedb</code>命令强制更新数据库，Mac下是<code>sudo /usr/libexec/locate.updatedb</code>，根据距上次更新后更改的文件数目多少，速度不同<br>只能通过文件名来搜索<br>遵守<code>/etc/updatedb.conf</code>配置文件里的筛选规则，所以即使你更新了数据库也不一定能locate到所要寻找的文件</p>
+</div><div class='cell markdown-cell'><h3 id="-">搜索命令的命令</h3>
+<ul>
+<li><code>whereis【选项】命令名</code><br><code>-b</code> 只查找可执行文件<br><code>-m</code> 只查找帮助文件<br>Mac用不了这两个选项</li><li><code>which 命令名</code><br>可以查看别名，Mac也没这个功能<br><code>cd</code>命令是shell自带的，找不到，<code>whereis</code>和<code>which</code>能找到的都是后来安装的命令</li></ul>
+</div><div class='cell markdown-cell'><h3 id="path-">PATH环境变量</h3>
+<p>Linux从<code>PATH</code>定义的路径中找寻命令，所有命令不用麻烦打绝对路径<br><code>echo $PATH</code>查看路径，<code>:</code>隔开</p>
+</div><div class='cell markdown-cell'><h3 id="-">文件搜索命令</h3>
+<p><code>find【搜索范围】【搜索条件】</code><br><code>-name</code> 按照文件名搜索<br><code>-iname</code> 文件名不区分大小写</p>
+</div><div class='cell markdown-cell'><h3 id="linux-">Linux中的通配符</h3>
+<p>#find是在系统当中搜索符合条件的文件名。如果需要匹配，使用通配符匹配，通配符是完全匹配的。<br>* 匹配任意内容（任意多个字符）<br>? 匹配任意一个字符<br>[] 匹配任意一个中括号内的字符<br>如<code>find desktop/ -name &quot;ab[cd]&quot;</code>匹配abc或abd</p>
+</div><div class='cell markdown-cell'><h3 id="-">按照所有者来搜索</h3>
+<p><code>-user</code> 按照所有者搜索,如<code>find /root -user root</code>是找root目录下所有者为root的文件<br><code>-nouser</code> 是找没有所有者的文件，如<code>find /root -nonuser</code>是找root目录下没有所有者的文件</p>
+</div><div class='cell markdown-cell'><h3 id="-">按照时间来搜索</h3>
+<p><code>find 【搜索范围】 -(X)time (+/-)时间</code><br>如<code>find /root -mtime +10</code>是查找十天前修改的文件<br><code>+10</code> 10天前修改的文件<br><code>10</code> 10天当天修改的文件<br><code>-10</code> 10天内修改的文件<br><code>atime</code> 访问文件的时间<br><code>ctime</code> 改变文件属性的时间<br><code>mtime</code> 修改文件内容的时间</p>
+</div><div class='cell markdown-cell'><h3 id="-">按照大小来搜索</h3>
+<p><code>find 【搜索范围】-size (+/-)X(k/M)</code><br>小写<code>k</code>是kB，大写<code>M</code>是MB<br>如<code>find /root -size +10k</code>是查找root目录下大小大于10kB的文件</p>
+</div><div class='cell markdown-cell'><h3 id="-i-">按照i节点来搜索</h3>
+<p><code>find 【搜索范围】-inum 【i节点号】</code><br>和<code>ls -i 【文件名】</code>正好相反</p>
+</div><div class='cell markdown-cell'><h3 id="-">多条件查询</h3>
+<p><code>find /root -size +20k -a -size -50k</code>查找20~50kB大小的文件<br><code>find /root -size -20k -o -size +50k</code>查找小于20或者大于50kB的文件<br><code>find /root -size +20k -a -size -50k -exec ls -lh {}\;</code>查找20~50kB的文件，并列出详细信息<br><code>-exec/-ok 命令 {} \;</code>用来继续处理搜索到的文件<br><code>find /root -inum 606838 -exec rm -rf {} \;</code>找到i节点号为606838的文件然后删除</p>
+</div></div>
+</body>
+</html>

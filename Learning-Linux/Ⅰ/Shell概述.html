@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Previous: <a href='字符串搜索命令.html'>字符串搜索命令</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>Shell概述</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><h3 id="shell-">Shell是什么？</h3>
+<ul>
+<li>是一个命令行解释器，它为用户提供了一个向Linux内核发送请求以便运行程序的界面系统级程序，用户可以用Shell来启动，挂起，停止甚至是编写一些程序</li><li>还是一个功能强大的变成语言，易编写，易调试，灵活性较强。Shell是解释执行的脚本语言，在Shell中可以直接调用Linux系统命令</li></ul>
+</div><div class='cell markdown-cell'><h3 id="shell-">Shell的分类</h3>
+<ul>
+<li><code>Bourne Shell</code>，也称为<code>B Shell</code>，1979年起Unix就开始使用它，主文件名为<code>sh</code></li><li><code>C Shell</code>，主要是BSD版的Unix系统中使用，因其语法和C语言相类似而得名</li></ul>
+<p>Shell的两种主要语法类型有Bourne和C，这两种语法彼此不兼容。前者主要包括<code>sh, ksh, Bash, psh</code>，后者主要包括<code>csh, tcsh</code>。</p>
+<p>Linux的标准Shell是<code>Bash</code>！<code>Bash</code>和<code>sh</code>是相互兼容的。通过执行<code>echo $SHELL</code>就可以看到当前系统支持的哪种Shell</p>
+</div><div class='cell markdown-cell'><h3 id="linux-shell">Linux支持的shell</h3>
+<p><code>vi /etc/shells</code> 可以看到当前Linux支持的所有Shell<br><code>sh</code> 就从<code>Bash</code>进入到了<code>sh</code><br><code>exit</code> 退出当前Shell<br>使用<code>bash</code>命令可以在已有的Bash下创建一个子Shell，同样使用<code>exit</code>退出，调用和退出都是一级一级连贯的<br>后续课程会讲自己当前所处的shell是什么</p>
+</div></div>
+</body>
+</html>

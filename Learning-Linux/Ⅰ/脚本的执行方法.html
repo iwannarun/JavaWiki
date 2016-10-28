@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Next: <a href='历史命令.html'>历史命令</a>, Previous: <a href='管道符.html'>管道符</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>脚本的执行方法</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><h3 id="echo-">echo输出命令</h3>
+<p><code>echo【选项】【输出内容】</code><br>如<code>echo &quot;cangls he bols ni xi huan na yi ge?&quot;</code>只要输出的内容里有空格就需要加双引号<br>选项<code>-e</code> ，表示支持反义字符</p>
+<h3 id="echo-python-">echo所能支持的反义字符（也可以用在Python里）</h3>
+<table>
+<thead>
+<tr>
+<th>反义字符</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\a</td>
+<td>输出警告音</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>退格键，也就是向左删除键</td>
+</tr>
+<tr>
+<td>\n</td>
+<td>换行符</td>
+</tr>
+<tr>
+<td>\r</td>
+<td>回车键</td>
+</tr>
+<tr>
+<td>\t</td>
+<td>制表符，也就是Tab键</td>
+</tr>
+<tr>
+<td>\v</td>
+<td>垂直制表符</td>
+</tr>
+<tr>
+<td>\0nnn</td>
+<td>按照八进制ASCⅡ码表输出字符。其中0为数字零，nnn是三位八进制数</td>
+</tr>
+<tr>
+<td>\xhh</td>
+<td>按照十六进制ASCⅡ码表输出字符。其中hh是两位十六进制数</td>
+</tr>
+</tbody>
+</table>
+<p>举个例子：<code>echo -e &quot;\x68\x65\x6c\x6c\x6f&quot;</code>，手动输入字符的十六进制ASCⅡ码值，输出就是<code>hello</code><br>Linux本机的纯字符界面是不支持中文的！<br>另外，在XShell这样的远程工具界面上是可以支持颜色显示的，如<code>echo -e &quot;\e[1;31m 嫁人就要嫁凤姐 \e[0m&quot;</code>，其中的<code>\e[1;31m</code>是开启颜色，<code>\e[0m</code>是关闭颜色，<code>31m</code>表示红色，可以支持的颜色从30到37</p>
+</div><div class='cell markdown-cell'><h3 id="-">第一个脚本</h3>
+</div><pre class='cell code-cell'><code>vim hello.sh
+#!/bin/bash
+#注释
+echo -e &quot;\e[1;34m 天上掉下个林妹妹 \e[0m&quot;</code></pre><div class='cell markdown-cell'><h3 id="-">脚本执行</h3>
+<ul>
+<li>赋予执行权限，调用脚本<br><code>chmod 755 hello.sh</code><br><code>./hello/sh</code> #相对路径</li><li>通过Bash直接执行脚本<br><code>bash hello.sh</code></li></ul>
+</div></div>
+</body>
+</html>

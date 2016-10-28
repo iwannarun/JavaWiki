@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Next: <a href='压缩命令2.html'>压缩命令2</a>, Previous: <a href='文件搜索命令.html'>文件搜索命令</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>压缩命令1</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><p>Linux中最常见的压缩格式有：.zip .gz .bz2 .tar.gz .tar.bz2</p>
+<h3 id="-zip-">.zip格式压缩</h3>
+<p><code>zip 压缩文件名 原文件</code> #压缩文件<br><code>zip -r 压缩文件名 源目录</code> #压缩目录</p>
+</div><pre class='cell code-cell'><code>JeffsMacBook-Pro:~ Jeff$ zip ~/desktop/install.zip ~/desktop/install.log
+  adding: Users/Jeff/desktop/install.log (stored 0%)
+JeffsMacBook-Pro:~ Jeff$ ls -l ~/desktop
+-rw-r--r--   1 Jeff  staff        0  4 13 18:35 install.log
+-rw-r--r--   1 Jeff  staff      210  4 15 23:07 install.zip</code></pre><div class='cell markdown-cell'><h3 id="-zip-">.zip格式解压缩</h3>
+<p><code>unzip 压缩文件</code> #在哪个目录下操作就解压到那个目录下</p>
+</div><div class='cell markdown-cell'><h3 id="-gz-">.gz格式压缩</h3>
+<p><code>gzip 源文件</code> #压缩后源文件会被删除<br><code>gzip -c 源文件 &gt; 压缩文件</code> #源文件被保留<br>如<code>gzip -c cangls &gt; cangls.gz</code><br><code>gzip -r 目录</code> #只能压缩目录下所有的子文件，但不能压缩目录</p>
+</div><div class='cell markdown-cell'><p>可以使用通配符统一处理多个压缩文件，如<code>rm -rf *.zip</code></p>
+</div><div class='cell markdown-cell'><h3 id="-gz-">.gz格式解压缩</h3>
+<p><code>gzip -d 压缩文件</code><br>等价于<code>gunzip 压缩文件</code>，会把源压缩文件删除</p>
+</div><div class='cell markdown-cell'><h3 id="-bz2-">.bz2格式压缩</h3>
+<p><code>bzip2 源文件</code> #压缩后源文件会被删除<br><code>bzip2 -k 源文件</code> #源文件被保留<br>此命令不能压缩目录！</p>
+</div><div class='cell markdown-cell'><h3 id="-bz2-">.bz2格式解压缩</h3>
+<p><code>bzip2 -d 压缩文件</code>可以用<code>-k</code>保留源文件<br>等价于<code>bunzip2 压缩文件</code>同样可用<code>-k</code></p>
+</div></div>
+</body>
+</html>

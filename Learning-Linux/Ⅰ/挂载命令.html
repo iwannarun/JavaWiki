@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- common.css -->
+  <style>body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:16px 2%;color:#333;word-wrap:break-word}img{max-width:100%!important}code{margin:0;padding:.2em 0;font-size:85%;background-color:rgba(0,0,0,.04);border-radius:3px}code:after,code:before{letter-spacing:-.2em;content:"\00a0"}pre{margin:0}pre>code{margin:0;padding:0;font-size:100%;word-break:normal;background:0 0;border:0}blockquote{margin:0;padding:0 15px;color:#777;border-left:4px solid #ddd}hr{background-color:#ddd;border:0;height:1px;margin:15px 0}ol{list-style-type:decimal}ol ol,ul ol{list-style-type:lower-latin}ol ol ol,ol ul ol,ul ol ol,ul ul ol{list-style-type:lower-roman}table{border-spacing:0;border-collapse:collapse;margin-top:0;margin-bottom:16px}table th{font-weight:700}table td,table th{padding:6px 13px;border:1px solid #ddd}table tr{background-color:#fff;border-top:1px solid #ccc}table tr:nth-child(even){background-color:#f8f8f8}input[type=checkbox]{cursor:default;margin-right:.5em}.task-list-item{list-style-type:none}.task-list-item+.task-list-item{margin-top:3px}.task-list-item input{float:left;margin:.3em 1em .25em -1.6em;vertical-align:middle}</style>
+  <!-- exported.css -->
+  <style>
+    #nav{margin:5px 10px 10px;font-size:15px}
+    #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px}
+    #contentarea{font-size:15px;margin:16px 0}
+    .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 10px;line-height:1.4}
+    .code-cell{font-size:13px}
+    .latex-cell{white-space:pre-wrap;}
+  </style>
+  <!-- User CSS -->
+  <style> .text-cell {font-size: 14px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 14px;}.latex-cell {font-size: 14px;}</style>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true,
+        processClass: 'latex-cell'
+      },
+      "HTML-CSS": {
+        preferredFont: "STIX"
+      }
+    };
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+  <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/docco.min.css">
+  <script>hljs.initHighlightingOnLoad();</script>
+</head>
+<body class="tex2jax_ignore">
+  <div id="nav"><div>Next: <a href='关机和重启命令.html'>关机和重启命令</a>, Previous: <a href='常用目录作用.html'>常用目录作用</a>, Up: <a href='index.html'>Index</a></div></div>
+  <div id="titlearea">
+    <h2>挂载命令</h2>
+  </div>
+  <div id="contentarea"><div class='cell markdown-cell'><p>相当于win中的分配盘符，只不过linux中叫挂载</p>
+<h3 id="-">查询与自动挂载</h3>
+<p><code>mount</code> 查询系统中已经挂载的设备</p>
+<ul>
+<li>显示的都是<code>~ on ~ type ~</code>这样的结构</li><li>如<code>/dev/sda5 on / type ext4 (rw)</code><br>其中<code>sda5</code>代表第一块SATA硬盘的第五个分区，<code>/</code>代表这是根分区，<code>ext4</code>代表文件系统是ext4，权限是读写；</li><li>类似的，<code>/dev/sda1 on /boot type ext4 (rw)</code>代表第一块SATA硬盘的第一个分区是boot分区，文件系统是ext4，权限是读写</li></ul>
+<p><code>mount -a</code> 依据配置文件<code>/etc/fstab</code>的内容，把这个文件里写的所有设备都挂载一遍，像<code>/，/boot，/home，swap</code>这些分区都在文件里，所以系统才会在每次开机时自动挂载这些分区</p>
+</div><div class='cell markdown-cell'><h3 id="-">挂载命令格式</h3>
+<p><code>mount【-t文件系统】【-o特殊选项】设备文件名 挂载点</code><br><code>-t 文件系统</code> 加入文件系统类型来指定挂载的类型，可以ext3，ext4，iso9660等文件系统<br><code>-o 特殊选项</code> 可以指定挂载的额外选项，有各种参数，可多个一起，用逗号隔开<br>特别看下这个<code>exec/noexec</code>，代表执行/不执行，设定是否允许在文件系统中执行可执行文件，默认是exec文件<br>比如<code>mount -o remount,noexec /home/</code>表示重新挂载<code>/home</code>分区，并且不允许执行可执行文件，此时如果再去<code>./hello.sh</code>会显示权限不够</p>
+</div><pre class='cell code-cell'><code>#初识脚本文件
+vi hello.sh #创建一个名为hello的脚本文件
+#按`I`插入内容
+#!/bin/bash #开头必须加上这行注释，脚本才能执行
+echo &quot;hello world!&quot; #echo是输出命令
+#按`ESC`退出编辑
+#键入`:wq`保存并退出
+chmod 755 hello.sh #赋予执行权限
+./hello.sh #`./`用来执行脚本，表示当前目录下，也可以用绝对路径</code></pre><div class='cell markdown-cell'><h3 id="-">挂载光盘</h3>
+<p>第一步：把光盘放到光驱里<br>第二步：<code>mkdir /mnt/cdrom/</code> 建立挂载点（可以在任何空目录下建立挂载点，特别地，在<code>/</code>目录下有<code>/mnt，/media，/misc</code>三个空目录，分别用来挂可移动设备，光盘和磁带机）<br>第三步：<code>mkdir -t iso9660 /dev/sr0 /mnt/cdrom</code> 挂载光盘（<code>sr0</code>就是光盘设备名，是固定的，记下即可，也可以是<code>cdrom</code>，不过它和<code>sr0</code>是软链接，相当于同一个文件；另外<code>-t iso9660</code>可以省略，因为光盘的默认文件系统就是<code>iso9660</code>）<br>第四步：<code>ls /mnt/cdrom</code> 读取光盘下的内容</p>
+</div><div class='cell markdown-cell'><h3 id="-">卸载光盘</h3>
+<p>在Linux中，一定！！要执行此命令，才能正常取出光盘<br><code>umount 设备文件名或挂载点</code>，如<code>umount /dev/sr0</code>或者<code>umount /mnt/cdrom</code><br>如果显示<code>device is busy</code>，原因可能是你当前目录正是当前目录</p>
+</div><div class='cell markdown-cell'><h3 id="-u-">挂载U盘</h3>
+<p>首先说明，插入的U盘相当于另一块硬盘，感觉设备文件名应该是sdb1，但不是固定的，不像光盘一定是sr0或者cdrom<br><code>fdisk -l</code> 查看系统中已经识别的硬盘，由此找到U盘设备名<br><code>mount -t vfat/dev/sdb1 /mnt/usb</code> 挂载U盘，再次申明<code>sdb1</code>不是固定的，这里的<code>vfat</code>指的是win中的<code>FAT32</code></p>
+<h3 id="linux-ntfs-">Linux不支持NTFS文件系统！！</h3>
+<p>Linux不像win需要一个一个安装驱动，它会一次性将所有能够认识的驱动全都放在内核里，但由于这样做的消耗太大，所以很多不会经常用的驱动就没有加载，比如NTFS，你需要进行内核编译，但此工作量太大，一般在工作中也不需要使用，除非做的是安卓之类的开发。<br>解决方法是：搜索<code>ntfs-3g</code>，安装，这样linux就会支持NTFS<br><code>实际上，真正要进行文件的传输，不会使用U盘和光盘，而是通过网络传输，这在后续课程中会讲解！！</code></p>
+</div></div>
+</body>
+</html>
