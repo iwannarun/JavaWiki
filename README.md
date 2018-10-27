@@ -8,9 +8,9 @@
 
 ## 交流
 
-欢迎在[个人主页https://blog.iwannarun.cn](https://blog.iwannarun.cn)投稿留言
+欢迎在个人主页[https://blog.iwannarun.cn](https://blog.iwannarun.cn)投稿留言
 
-如有侵权，请联系[邮箱](iwannarungg@gmail.com)删除
+如有侵权，请联系[邮箱](mailto://iwannarungg@gmail.com)删除
 
 ## 目录
 
