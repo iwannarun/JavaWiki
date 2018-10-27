@@ -6,7 +6,11 @@
 [![GitHub forks](https://img.shields.io/github/forks/iwannarun/JavaWiki.svg?style=flat-square)](https://github.com/iwannarun/JavaWiki/network)
 [![GitHub stars](https://img.shields.io/github/stars/iwannarun/JavaWiki.svg?style=flat-square)](https://github.com/iwannarun/JavaWiki/stargazers)
 
+## 交流
 
+欢迎在[个人主页https://blog.iwannarun.cn](https://blog.iwannarun.cn)投稿留言
+
+如有侵权，请联系[邮箱](iwannarungg@gmail.com)删除
 
 ## 目录
 
@@ -80,7 +84,7 @@
 ### [操作系统相关](https://github.com/iwannarun/JavaWiki/tree/master/操作系统相关)
 * [Docker —— 从入门到实践 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
 * [IntelliJ IDEA 使用教程 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
-* [Java 程序员眼中的 Linux - v1.0](https://github.com/iwannarun/JavaWiki/tree/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/Java%20%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9C%BC%E4%B8%AD%E7%9A%84%20Linux%20-%20v1.0)
+* [Java程序员眼中的Linux-v1.0](https://github.com/iwannarun/JavaWiki/tree/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/Java%20%E7%A8%8B%E5%BA%8F%E5%91%98%E7%9C%BC%E4%B8%AD%E7%9A%84%20Linux%20-%20v1.0)
 * [Learning-Linux](https://github.com/iwannarun/JavaWiki/tree/master/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9B%B8%E5%85%B3/Learning-Linux)
 * [Nginx 入门指南 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
 * [idea使用教程2017-06-01.pdf](https://github.com/iwannarun/JavaWiki)
@@ -102,4 +106,7 @@
 ### [面试相关](https://github.com/iwannarun/JavaWiki/tree/master/面试相关)
 * [Java 面试宝典 - v1.1.pdf](https://github.com/iwannarun/JavaWiki)
 * [剑指 Offer 学习心得 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
+
+
+
 
