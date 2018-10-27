@@ -10,7 +10,7 @@
 
 欢迎在个人主页[https://blog.iwannarun.cn](https://blog.iwannarun.cn)投稿留言
 
-如有侵权，请联系[邮箱](mailto://iwannarungg@gmail.com)删除
+如有侵权，请联系[邮箱](mailto:iwannarungg@gmail.com)删除
 
 ## 目录
 
