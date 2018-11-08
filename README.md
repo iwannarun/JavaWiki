@@ -103,6 +103,7 @@
 * [HTTP2 讲解 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
 * [JSON 中文版 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
 * [用 JSON 构建 API 的标准指南 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
+* [阿里巴巴Java开发规范手册(详尽版).pdf](https://github.com/iwannarun/JavaWiki)
 ### [面试相关](https://github.com/iwannarun/JavaWiki/tree/master/面试相关)
 * [Java 面试宝典 - v1.1.pdf](https://github.com/iwannarun/JavaWiki)
 * [剑指 Offer 学习心得 - v1.0.pdf](https://github.com/iwannarun/JavaWiki)
