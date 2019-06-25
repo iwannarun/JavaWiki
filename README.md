@@ -10,7 +10,8 @@
 
 欢迎在个人主页[https://blog.iwannarun.cn](https://blog.iwannarun.cn)投稿留言
 
-如有侵权，请联系[邮箱](mailto:iwannarungg@gmail.com)删除
+## 声明
+此仓库仅用于个人学习，例如他人盗用本仓库代码用于商业用途，本人不承担任何责任。如有侵权，请联系[邮箱](mailto:iwannarungg@gmail.com)删除
 
 ## 目录
 
